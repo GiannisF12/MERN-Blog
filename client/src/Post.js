@@ -1,16 +1,18 @@
-export default function Post(){
+import {format} from "date-fns";
+
+export default function Post({title,summary,cover,content,createdAt,author}){
     return(
         <div className="post">
             <div className="image">
-                <img src="https://techcrunch.com/wp-content/uploads/2023/02/GettyImages-1173441590.jpg?w=990&crop=1" alt=""/>
+                <img src={'http://localhost:4000/'+cover} alt=""/>
             </div>
             <div className="texts">
-                <h2>OpenAI launches an API for ChatGPT</h2>
+                <h2>{title}</h2>
                 <p className="info">
-                    <a className="author">Gianis Foras</a>
-                    <time>05-03-2023 17:25</time>
+                    <a className="author">{author.username}</a>
+                    <time>{format(new Date(createdAt), 'd MMM, yyyy HH:mm:ss')}</time>
                 </p>
-                <p className="summary">OpenAI introduced an API that'll allow any business to build ChatGPT tech into their apps, websites, products and services. (As a refresher, ChatGPT is the free text-generating AI that can write human-like code</p>
+                <p className="summary">{summary}</p>
           </div>
       </div>
     );
